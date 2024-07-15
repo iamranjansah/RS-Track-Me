@@ -41,3 +41,11 @@ socket.on('receive-location', (data) =>{
     
 });
 
+socket.on('user-disconnected', (id) =>{
+    if(markers[id]){
+        map.removeLayer(markers[id]);  // This line is used to remove marker from map when user disconnects. If not used, marker will persist on map.
+        // markers[id].remove();
+        delete markers[id];
+    }
+ 
+});
